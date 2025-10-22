@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 262 80% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 262 80% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 262 80% 10%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 262 47% 11%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 262 30% 96%;
+    --muted-foreground: 262 10% 45%;
+
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 262 20% 90%;
+    --input: 262 20% 90%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.75rem;
+
+    /* Clutter IQ specific tokens */
+    --gradient-start: 262 80% 20%;
+    --gradient-mid: 262 70% 35%;
+    --gradient-end: 280 70% 45%;
+    
+    --hero-gradient: linear-gradient(135deg, hsl(262 80% 20%), hsl(262 70% 35%), hsl(280 70% 45%));
+  }
+
+  .dark {
+    --background: 262 80% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 262 50% 15%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 262 50% 15%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 262 47% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 262 30% 20%;
+    --muted-foreground: 262 10% 65%;
+
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 262 30% 25%;
+    --input: 262 30% 25%;
+    --ring: 262 83% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-mid)), hsl(var(--gradient-end)));
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(262 80% 20%), hsl(262 70% 35%), hsl(280 70% 45%));
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .geometric-pattern {
+    background-image: 
+      repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+  }
+}
